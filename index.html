@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-        <script src="plugins/jquery.js"></script>
-        <script src="plugins/knockout.js"></script>
-        <script src="plugins/require.js"></script>
-        <script>
-            var Pokemon = null;
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="plugins/jquery.js"></script>
+    <script src="plugins/require.js"></script>
+    <script>
+      var Pokemon = null;
 
-            function startup() {
-                require(['js/application.js'], (Application) => {
-                    Pokemon = new Application();
-                    Pokemon.startApplication();
-                })
-            };
-
-        </script>
-        <title>Pokemon</title>
-    </head>
-    <body onload="startup()">
-        <div id="mainbody">
-            <input type="text">
-        </div>
-    </body>
+      function startup() {
+        require(["js/application.js", "plugins/knockout.js"], (
+          Application,
+          ko
+        ) => {
+          Pokemon = new Application();
+          Pokemon.startApplication();
+        });
+      }
+    </script>
+    <title>Pokemon</title>
+  </head>
+  <body onload="startup()">
+    <div id="mainbody">
+      <label for="pokemonSearch">search: </label>
+      <input id="pokemonSearch" type="text" placeholder="search pokemon" />
+    </div>
+  </body>
 </html>

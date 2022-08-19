@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="style.css" rel="stylesheet" type="text/css">
-        <script src="/Plugins/JQuery/JQuery.js"></script>
-        <script src="/Plugins/Knockout/Knockout.js"></script>
-        <script src="/Plugins/RequireJS/RequireJS.js"></script>
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <script src="plugins/jquery.js"></script>
+        <script src="plugins/knockout.js"></script>
+        <script src="plugins/require.js"></script>
         <script>
             var Pokemon = null;
 
-            $(document).ready(() => {
-                require(['app.js'], App => {
-                    Pokemon = new App();
-                    Pokemon.startApp();
+            function startup() {
+                require(['js/application.js'], (Application) => {
+                    Pokemon = new Application();
+                    Pokemon.startApplication();
                 })
-            })
+            };
 
         </script>
         <title>Pokemon</title>
     </head>
-    <body>
+    <body onload="startup()">
+        <div id="mainbody">
+            <input type="text">
+        </div>
     </body>
 </html>

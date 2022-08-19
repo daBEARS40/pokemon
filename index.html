@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script src="/Plugins/JQuery/JQuery.js"></script>
+        <script src="/Plugins/Knockout/Knockout.js"></script>
+        <script src="/Plugins/RequireJS/RequireJS.js"></script>
+        <script>
+            var Pokemon = null;
+
+            $(document).ready(() => {
+                require(['app.js'], App => {
+                    Pokemon = new App();
+                    Pokemon.startApp();
+                })
+            })
+
+        </script>
+        <title>Pokemon</title>
+    </head>
+    <body>
+    </body>
+</html>

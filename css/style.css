@@ -2,3 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
+#search-list > li {
+  font-family: arial;
+}

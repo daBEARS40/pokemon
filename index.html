@@ -16,11 +16,15 @@
   </head>
   <body onload="startup()">
     <div id="mainbody">
-      <label for="pokemonSearch">search: </label>
-      <input id="pokemonSearch" type="text" placeholder="search pokemon" />
-      <ul id="search-list" data-bind="foreach: pokemonSearchList">
-        <li data-bind="text: name"></li>
-      </ul>
+      <div id="obj"><p>test</p></div>
+      <div id="search-bar">
+        <input id="pokemonSearch" type="text" placeholder="search pokemon" />
+        <div id="search-results">
+          <ul id="search-list" data-bind="foreach: pokemonSearchList">
+            <li data-bind="text: name"></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </body>
 </html>

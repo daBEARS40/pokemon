@@ -3,6 +3,37 @@
   padding: 0;
 }
 
+#mainbody {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#obj {
+  height: 40%;
+}
+
+#search-bar {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+#pokemonSearch {
+  height: 5%;
+  text-align: center;
+}
+
+#search-results {
+  overflow-y: scroll;
+}
+
 #search-list > li {
+  display: flex;
   font-family: arial;
+  list-style-type: none;
+  justify-content: center;
+  padding: 4px;
 }

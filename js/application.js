@@ -33,15 +33,14 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
 
   function TrimSearchResults() {
     let currentSearch = $("#pokemonSearch").val();
-
-    for (let i = Pokemon.pokemonList().length - 1; i >= 0; i--) {
+    let i = Pokemon.pokemonList().length - 1;
+    while (i >= 0) {
       let match = Pokemon.pokemonList()[i].name().match(currentSearch);
       if (!match) {
         Pokemon.pokemonList.remove(Pokemon.pokemonList()[i]);
         Pokemon.pokemonList.valueHasMutated();
-      } else {
-        continue;
       }
+      i--;
     }
   }
 

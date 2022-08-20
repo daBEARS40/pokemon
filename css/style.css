@@ -20,7 +20,12 @@
 
 #pokemonSearch {
   min-height: 5vh;
+  font-size: 2vh;
   text-align: center;
+}
+
+#pokemonSearch::-webkit-input-placeholder {
+  opacity: 0.5;
 }
 
 #search-results {
@@ -31,10 +36,19 @@
   min-height: 59.5vh;
 }
 
-#search-list > li {
+.search-list-item {
   display: flex;
   font-family: arial;
   list-style-type: none;
   justify-content: center;
   padding: 4px;
+}
+
+.search-list-item:hover {
+  cursor: context-menu;
+  background-color: lightgrey;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }

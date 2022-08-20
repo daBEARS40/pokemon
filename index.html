@@ -2,16 +2,11 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <script src="plugins/jquery.js"></script>
     <script src="plugins/require.js"></script>
     <script>
       var Pokemon = null;
-
       function startup() {
-        require(["js/application.js", "plugins/knockout.js"], (
-          Application,
-          ko
-        ) => {
+        require(["js/application.js"], (Application) => {
           Pokemon = new Application();
           Pokemon.startApplication();
         });

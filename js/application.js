@@ -1,4 +1,4 @@
-define(["/plugins/knockout.js", "/plugins/komap/komapping.js"], (ko, m) => {
+define(["/plugins/knockout.js", "/plugins/komapping.js"], (ko, m) => {
   class Application {
     constructor(_options) {
       ko.mapping = m;

@@ -3,7 +3,10 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
     constructor(_options) {
       ko.mapping = m;
       this.baseServiceUrl = "https://pokeapi.co/api/v2/";
-      this.pokemonList = ko.observableArray([]);
+      this.allPokemon = [];
+      this.pokemonSearchList = ko.observableArray([]);
+      this.currentSearch = "";
+      this.searchLength = 0;
     }
 
     async startApplication() {
@@ -18,9 +21,10 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
       fetch(`${this.baseServiceUrl}pokemon?limit=100000&offset=0`)
         .then((response) => response.json())
         .then((data) => {
+          this.allPokemon = data.results;
           $.each(data.results, (_i, v) => {
-            let obj = { name: v.name, url: v.url };
-            this.pokemonList.push(ko.mapping.fromJS(obj));
+            // let obj = { name: v.name, url: v.url };
+            this.pokemonSearchList.push(ko.mapping.fromJS(v));
           });
           resolve();
         });
@@ -28,20 +32,52 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
   }
 
   function BindUIControls() {
-    $("#pokemonSearch").on("keyup", TrimSearchResults);
+    $("#pokemonSearch").on("keyup", ManageSearchResults.bind(this));
+  }
+
+  function ManageSearchResults() {
+    this.currentSearch = $("#pokemonSearch").val();
+    if (!this.currentSearch) {
+      if (this.pokemonSearchList.length !== this.allPokemon.length) {
+        this.pokemonSearchList.removeAll();
+        for (let i = 0; i < this.allPokemon.length; i++) {
+          this.pokemonSearchList.push(ko.mapping.fromJS(this.allPokemon[i]));
+        }
+      }
+      return;
+    }
+    if (this.currentSearch.length > this.searchLength) {
+      TrimSearchResults.call(this);
+    } else if (this.currentSearch.length < this.searchLength) {
+      GrowSearchResults.call(this);
+    } else {
+      return;
+    }
   }
 
   function TrimSearchResults() {
-    let currentSearch = $("#pokemonSearch").val();
-    let i = Pokemon.pokemonList().length - 1;
+    let i = this.pokemonSearchList().length - 1;
     while (i >= 0) {
-      let match = Pokemon.pokemonList()[i].name().match(currentSearch);
+      let match = this.pokemonSearchList()[i].name().match(this.currentSearch);
       if (!match) {
-        Pokemon.pokemonList.remove(Pokemon.pokemonList()[i]);
-        Pokemon.pokemonList.valueHasMutated();
+        this.pokemonSearchList.remove(this.pokemonSearchList()[i]);
+        this.pokemonSearchList.valueHasMutated();
       }
       i--;
     }
+    this.searchLength = this.currentSearch.length;
+  }
+
+  function GrowSearchResults() {
+    this.pokemonSearchList.removeAll();
+    for (let i = 0; i < this.allPokemon.length; i++) {
+      let match = this.allPokemon[i].name.match(this.currentSearch);
+      if (match) {
+        this.pokemonSearchList.push(ko.mapping.fromJS(this.allPokemon[i]));
+      }
+    }
+    this.pokemonSearchList.valueHasMutated();
+    this.searchLength = this.currentSearch.length;
   }
 
   return Application;

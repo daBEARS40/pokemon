@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <script src="plugins/require.js"></script>
+    <script data-main="plugins/requireconfig" src="plugins/require.js"></script>
     <script>
       var Pokemon = null;
       function startup() {
@@ -18,6 +18,10 @@
     <div id="mainbody">
       <label for="pokemonSearch">search: </label>
       <input id="pokemonSearch" type="text" placeholder="search pokemon" />
+      <ul id="search-list" data-bind="foreach: pokemonOptions">
+        <!-- <search-item data-bind="data:$data"></search-item> -->
+        <li data-bind="text: name"></li>
+      </ul>
     </div>
   </body>
 </html>

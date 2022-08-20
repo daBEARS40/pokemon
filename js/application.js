@@ -1,28 +1,42 @@
-define(["/plugins/knockout.js", "/plugins/komapping.js"], (ko, m) => {
+define(["jquery", "knockout", "komapping"], ($, ko, m) => {
   class Application {
     constructor(_options) {
       ko.mapping = m;
       this.baseServiceUrl = "https://pokeapi.co/api/v2/";
       this.pokemonList = [];
+      this.pokemonOptions = ko.observableArray([]);
     }
 
-    startApplication() {
-      GetPokemonList.call(this);
+    async startApplication() {
+      await GetPokemonList.call(this);
       BindUIControls.call(this);
+      ko.applyBindings(this);
     }
   }
 
   function BindUIControls() {
-    // $("#pokemonSearch").on("change", TrimSearchResults.call(this));
+    $("#pokemonSearch").on("change", TrimSearchResults.call(this));
   }
 
   function GetPokemonList() {
-    fetch(`${this.baseServiceUrl}pokemon?limit=100000&offset=0`)
-      .then((response) => response.json())
-      .then((data) => {
-        this.pokemonList = data.results;
-      });
+    return new Promise((resolve) => {
+      fetch(`${this.baseServiceUrl}pokemon?limit=100000&offset=0`)
+        .then((response) => response.json())
+        .then((data) => {
+          this.pokemonList = data.results;
+          $.each(data.results, (_i, v) => {
+            let obj = { name: null };
+            obj.name = v.name;
+            this.pokemonOptions.push(ko.mapping.fromJS(obj));
+          });
+          if (this.pokemonOptions().length === this.pokemonList.length) {
+            resolve();
+          }
+        });
+    });
   }
+
+  function TrimSearchResults() {}
 
   return Application;
 });

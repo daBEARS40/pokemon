@@ -18,8 +18,7 @@
     <div id="mainbody">
       <label for="pokemonSearch">search: </label>
       <input id="pokemonSearch" type="text" placeholder="search pokemon" />
-      <ul id="search-list" data-bind="foreach: pokemonOptions">
-        <!-- <search-item data-bind="data:$data"></search-item> -->
+      <ul id="search-list" data-bind="foreach: pokemonList">
         <li data-bind="text: name"></li>
       </ul>
     </div>

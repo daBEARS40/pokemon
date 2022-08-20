@@ -8,6 +8,7 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
 
     async startApplication() {
       await GetPokemonList.call(this);
+      BindUIControls.call(this);
       ko.applyBindings(this);
     }
   }
@@ -24,6 +25,24 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
           resolve();
         });
     });
+  }
+
+  function BindUIControls() {
+    $("#pokemonSearch").on("keyup", TrimSearchResults);
+  }
+
+  function TrimSearchResults() {
+    let currentSearch = $("#pokemonSearch").val();
+
+    for (let i = Pokemon.pokemonList().length - 1; i >= 0; i--) {
+      let match = Pokemon.pokemonList()[i].name().match(currentSearch);
+      if (!match) {
+        Pokemon.pokemonList.remove(Pokemon.pokemonList()[i]);
+        Pokemon.pokemonList.valueHasMutated();
+      } else {
+        continue;
+      }
+    }
   }
 
   return Application;

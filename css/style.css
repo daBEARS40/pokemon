@@ -11,23 +11,24 @@
   width: 100vw;
 }
 
-#obj {
-  height: 40%;
-}
-
 #search-bar {
   display: flex;
   flex-direction: column;
   width: 30%;
+  padding-top: 35vh;
 }
 
 #pokemonSearch {
-  height: 5%;
+  min-height: 5vh;
   text-align: center;
 }
 
 #search-results {
   overflow-y: scroll;
+}
+
+#search-list {
+  min-height: 59vh;
 }
 
 #search-list > li {

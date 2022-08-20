@@ -23,7 +23,6 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
         .then((data) => {
           this.allPokemon = data.results;
           $.each(data.results, (_i, v) => {
-            // let obj = { name: v.name, url: v.url };
             this.pokemonSearchList.push(ko.mapping.fromJS(v));
           });
           resolve();
@@ -40,9 +39,10 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
     if (!this.currentSearch) {
       if (this.pokemonSearchList.length !== this.allPokemon.length) {
         this.pokemonSearchList.removeAll();
-        for (let i = 0; i < this.allPokemon.length; i++) {
-          this.pokemonSearchList.push(ko.mapping.fromJS(this.allPokemon[i]));
+        for (const mon of this.allPokemon) {
+          this.pokemonSearchList.push(ko.mapping.fromJS(mon));
         }
+        this.searchLength = 0;
       }
       return;
     }
@@ -70,10 +70,10 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
 
   function GrowSearchResults() {
     this.pokemonSearchList.removeAll();
-    for (let i = 0; i < this.allPokemon.length; i++) {
-      let match = this.allPokemon[i].name.match(this.currentSearch);
+    for (const mon of this.allPokemon) {
+      let match = mon.name.match(this.currentSearch);
       if (match) {
-        this.pokemonSearchList.push(ko.mapping.fromJS(this.allPokemon[i]));
+        this.pokemonSearchList.push(ko.mapping.fromJS(mon));
       }
     }
     this.pokemonSearchList.valueHasMutated();

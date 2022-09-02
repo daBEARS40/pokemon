@@ -5,8 +5,20 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
       this.baseServiceUrl = "https://pokeapi.co/api/v2/";
       this.allPokemon = [];
       this.pokemonSearchList = ko.observableArray([]);
+      this.selectedPkmn = ko.observable();
+      this.spriteUrl = ko.observable("");
       this.currentSearch = "";
       this.searchLength = 0;
+    }
+
+    displayPokemon(item) {
+      let pkmn = ko.mapping.toJS(item);
+      fetch(`${pkmn.url}`)
+        .then((response) => response.json())
+        .then((data) => {
+          Pokemon.selectedPkmn(ko.mapping.fromJS(data));
+          Pokemon.spriteUrl(data.sprites.front_default);
+        });
     }
 
     async startApplication() {

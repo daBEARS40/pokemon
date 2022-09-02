@@ -16,11 +16,24 @@
   </head>
   <body onload="startup()">
     <div id="mainbody">
+      <div id="pokemon-display" data-bind="visible: spriteUrl">
+        <div id="pkmn-sprite">
+          <img
+            data-bind="attr: {src: spriteUrl}"
+            alt="Pokemon Sprite"
+            id="pkmn-img"
+          />
+        </div>
+      </div>
+
       <div id="search-bar">
         <input id="pokemonSearch" type="text" placeholder="search pokemon" />
         <div id="search-results">
           <ul id="search-list" data-bind="foreach: pokemonSearchList">
-            <li class="search-list-item" data-bind="text: name"></li>
+            <li
+              class="search-list-item"
+              data-bind="text: name, click: $parent.displayPokemon"
+            ></li>
           </ul>
         </div>
       </div>

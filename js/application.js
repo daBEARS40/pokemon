@@ -26,6 +26,10 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
       BindUIControls.call(this);
       ko.applyBindings(this);
     }
+
+    nutsack(a, b) {
+      console.log(a + b);
+    }
   }
 
   function GetPokemonList() {
@@ -70,7 +74,9 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
   function TrimSearchResults() {
     let i = this.pokemonSearchList().length - 1;
     while (i >= 0) {
-      let match = this.pokemonSearchList()[i].name().match(this.currentSearch);
+      let match = this.pokemonSearchList()
+        [i].name()
+        .match(this.currentSearch.toLowerCase());
       if (!match) {
         this.pokemonSearchList.remove(this.pokemonSearchList()[i]);
         this.pokemonSearchList.valueHasMutated();
@@ -83,7 +89,7 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
   function GrowSearchResults() {
     this.pokemonSearchList.removeAll();
     for (const mon of this.allPokemon) {
-      let match = mon.name.match(this.currentSearch);
+      let match = mon.name.match(this.currentSearch.toLowerCase());
       if (match) {
         this.pokemonSearchList.push(ko.mapping.fromJS(mon));
       }

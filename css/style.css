@@ -19,7 +19,6 @@ select:focus {
 
 #main-header {
   display: flex;
-  /* align-items: center; */
   justify-content: end;
   height: 60px;
   width: 100%;
@@ -63,14 +62,16 @@ select:focus {
 }
 
 #main-search-list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
 }
 
 .search-list-item {
-  display: flex;
   font-family: arial;
   list-style-type: none;
-  justify-content: center;
-  padding: 4px;
+  padding: 2px;
 }
 
 .search-list-item:hover {

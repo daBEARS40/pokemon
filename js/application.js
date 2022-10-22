@@ -43,12 +43,17 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
   }
 
   function BindUIControls() {
-    $("#pokemonSearch").on("keyup", ManageSearchResults.bind(this));
+    $("#search-input").on("keyup", ManageSearchResults.bind(this));
   }
 
   function ManageSearchResults() {
-    this.currentSearch = $("#pokemonSearch").val();
+    this.currentSearch = $("#search-input").val();
     if (!this.currentSearch) {
+      $("#main-search-results").css("display", "none");
+      $("#main-search-bar").css({
+        border: "1px solid black",
+        "border-radius": "5px",
+      });
       if (this.pokemonSearchList.length !== this.allPokemon.length) {
         this.pokemonSearchList.removeAll();
         for (const mon of this.allPokemon) {
@@ -58,6 +63,20 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
       }
       return;
     }
+
+    $("#main-search-results").css({
+      display: "flex",
+      "justify-content": "center",
+    });
+
+    $("#main-search-bar").css({
+      border: "none",
+      "border-radius": "5px 5px 0 0",
+      "border-top": "1px solid black",
+      "border-left": "1px solid black",
+      "border-right": "1px solid black",
+    });
+
     if (this.currentSearch.length > this.searchLength) {
       TrimSearchResults.call(this);
     } else if (this.currentSearch.length < this.searchLength) {

@@ -3,6 +3,10 @@
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script data-main="plugins/requireconfig" src="plugins/require.js"></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <script>
       var Pokemon = null;
       function startup() {
@@ -16,7 +20,24 @@
   </head>
   <body onload="startup()">
     <div id="mainbody">
-      <div id="pokemon-display" data-bind="visible: spriteUrl">
+      <div id="main-header">
+        <div id="main-team-builder"></div>
+        <div id="main-search">
+          <div id="main-search-bar">
+            <label class="material-icons" for="search-input">search</label>
+            <input id="search-input" type="text" placeholder="search pokemon" />
+          </div>
+          <div id="main-search-results">
+            <ul id="main-search-list" data-bind="foreach: pokemonSearchList">
+              <li
+                class="search-list-item"
+                data-bind="text: name, click: $parent.displayPokemon"
+              ></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- <div id="pokemon-display" data-bind="visible: spriteUrl">
         <div id="pkmn-sprite">
           <img
             data-bind="attr: {src: spriteUrl}"
@@ -24,19 +45,7 @@
             id="pkmn-img"
           />
         </div>
-      </div>
-
-      <div id="search-bar">
-        <input id="pokemonSearch" type="text" placeholder="search pokemon" />
-        <div id="search-results">
-          <ul id="search-list" data-bind="foreach: pokemonSearchList">
-            <li
-              class="search-list-item"
-              data-bind="text: name, click: $parent.displayPokemon"
-            ></li>
-          </ul>
-        </div>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

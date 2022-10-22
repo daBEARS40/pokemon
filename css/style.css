@@ -9,9 +9,9 @@ select:focus {
   outline: none;
 }
 
-#mainbody {
+#container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   overflow: hidden;
   height: 100vh;
   width: 100vw;
@@ -23,6 +23,11 @@ select:focus {
   height: 60px;
   width: 100%;
   border-bottom: 1px solid black;
+}
+
+#main-body {
+  height: 100%;
+  width: 100%;
 }
 
 #main-search {

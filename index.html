@@ -19,7 +19,7 @@
     <title>Pokemon</title>
   </head>
   <body onload="startup()">
-    <div id="mainbody">
+    <div id="container">
       <div id="main-header">
         <div id="main-team-builder"></div>
         <div id="main-search">
@@ -37,15 +37,17 @@
           </div>
         </div>
       </div>
-      <!-- <div id="pokemon-display" data-bind="visible: spriteUrl">
-        <div id="pkmn-sprite">
-          <img
-            data-bind="attr: {src: spriteUrl}"
-            alt="Pokemon Sprite"
-            id="pkmn-img"
-          />
+      <div id="main-body">
+        <div id="pokemon-display" data-bind="visible: spriteUrl">
+          <div id="pkmn-sprite">
+            <img
+              data-bind="attr: {src: spriteUrl}"
+              alt="Pokemon Sprite"
+              id="pkmn-img"
+            />
+          </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </body>
 </html>

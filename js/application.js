@@ -26,10 +26,6 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
       BindUIControls.call(this);
       ko.applyBindings(this);
     }
-
-    nutsack(a, b) {
-      console.log(a + b);
-    }
   }
 
   function GetPokemonList() {

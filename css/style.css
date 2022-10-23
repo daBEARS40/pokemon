@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: arial;
 }
 
 input:focus,
@@ -28,6 +29,8 @@ select:focus {
 #main-body {
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #main-search {
@@ -86,4 +89,73 @@ select:focus {
 
 ::-webkit-scrollbar {
   width: 0px;
+}
+
+#pokemon-display {
+  display: flex;
+}
+
+#display-left {
+  display: flex;
+  flex-direction: column;
+}
+
+#display-right {
+  display: flex;
+  flex-direction: column;
+}
+
+#pkmn-stats {
+  background: aquamarine;
+  border-radius: 10px;
+  height: 230px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#stats-title {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#stats-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+
+.stat-bar {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.stat-block {
+  list-style-type: none;
+  width: 10px;
+  height: 10px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.stat-name {
+  width: 145px;
+  text-align: center;
 }

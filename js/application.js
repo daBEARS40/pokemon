@@ -17,7 +17,10 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
         .then((response) => response.json())
         .then((data) => {
           Pokemon.selectedPkmn(ko.mapping.fromJS(data));
-          Pokemon.spriteUrl(data.sprites.front_default);
+          Pokemon.spriteUrl(
+            data.sprites.other["official-artwork"].front_default
+          );
+          DisplayBaseStats.call(Pokemon);
         });
     }
 
@@ -111,6 +114,20 @@ define(["jquery", "knockout", "komapping"], ($, ko, m) => {
     }
     this.pokemonSearchList.valueHasMutated();
     this.searchLength = this.currentSearch.length;
+  }
+
+  function DisplayBaseStats() {
+    let pkmnStats = ko.mapping.toJS(this.selectedPkmn().stats());
+    $(".stat-block").css("background-color", "white");
+    const valPerBlock = 17;
+    $.each(pkmnStats, (i, v) => {
+      let currentStat = v.stat.name;
+      let boxesToFill = $($(`#stats-${currentStat}`).children()[1].children);
+      let numOf15 = Math.floor(v.base_stat / valPerBlock);
+      for (let i = 0; i <= numOf15; i++) {
+        $(boxesToFill[i]).css("background-color", "green");
+      }
+    });
   }
 
   return Application;

@@ -39,13 +39,143 @@
       </div>
       <div id="main-body">
         <div id="pokemon-display" data-bind="visible: spriteUrl">
-          <div id="pkmn-sprite">
-            <img
-              data-bind="attr: {src: spriteUrl}"
-              alt="Pokemon Sprite"
-              id="pkmn-img"
-            />
+          <div id="display-left">
+            <div id="pkmn-sprite">
+              <img
+                data-bind="attr: {src: spriteUrl}"
+                alt="Pokemon Sprite"
+                id="pkmn-img"
+              />
+            </div>
+            <div id="pkmn-stats">
+              <div id="stats-title">
+                <span>Base Stats</span>
+              </div>
+              <div id="stats-body">
+                <div id="stats-hp" class="stat-div">
+                  <p class="stat-name">HP:</p>
+                  <ul class="stat-bar">
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                  </ul>
+                </div>
+                <div id="stats-attack" class="stat-div">
+                  <p class="stat-name">Attack:</p>
+                  <ul class="stat-bar">
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                  </ul>
+                </div>
+                <div id="stats-defense" class="stat-div">
+                  <p class="stat-name">Defense:</p>
+                  <ul class="stat-bar">
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                  </ul>
+                </div>
+                <div id="stats-special-attack" class="stat-div">
+                  <p class="stat-name">Special Attack:</p>
+                  <ul class="stat-bar">
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                  </ul>
+                </div>
+                <div id="stats-special-defense" class="stat-div">
+                  <p class="stat-name">Special Defense:</p>
+                  <ul class="stat-bar">
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                  </ul>
+                </div>
+                <div id="stats-speed" class="stat-div">
+                  <p class="stat-name">Speed:</p>
+                  <ul class="stat-bar">
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                    <li class="stat-block"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
+          <div id="display-right"></div>
         </div>
       </div>
     </div>

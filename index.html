@@ -46,19 +46,15 @@
       </div>
       <div id="main-body">
         <div id="pokemon-display" data-bind="visible: spriteUrl">
-          <div id="display-left">
+          <div class="flex-col" id="display-left">
             <div id="pkmn-sprite">
-              <img
-                data-bind="attr: {src: spriteUrl}"
-                alt="Pokemon Sprite"
-                id="pkmn-img"
-              />
+              <img data-bind="attr: {src: spriteUrl}" alt="Pokemon Sprite" id="pkmn-img" />
             </div>
-            <div id="pkmn-stats">
-              <div id="stats-title">
+            <div class="pkmn-info-container" id="pkmn-stats" style="height: 230px; width: 500px">
+              <div class="pkmn-info-title" id="stats-title" style="width: 100%; height: 30px">
                 <span>Base Stats</span>
               </div>
-              <div id="stats-body">
+              <div class="flex-col" id="stats-body">
                 <div id="stats-hp" class="stat-div">
                   <p class="stat-name">HP:</p>
                   <ul class="stat-bar">
@@ -182,7 +178,18 @@
               </div>
             </div>
           </div>
-          <div id="display-right"></div>
+          <div class="flex-col" id="display-right">
+            <div class="pkmn-info-container" id="pkmn-description" style="height: 230px; width: 500px">
+              <div class="pkmn-info-title" id="pkmn-desc-header" style="width: 100%; height: 30px">
+                <span>Pokedex Information</span>
+              </div>
+              <div class="flex-col" id="pkmn-desc-body">
+                <div id="pkmn-dex-entry"></div>
+                <div id="pkmn-types"></div>
+                <div id="pkmn-battle-info"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
